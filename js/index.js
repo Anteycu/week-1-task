@@ -2,24 +2,36 @@ const fetchButton = document.querySelector(".js-btn");
 const numberInput = document.querySelector(".js-input");
 const outputBlock = document.querySelector(".js-rootOutput");
 
-numberInput.addEventListener("change", (e) =>
-  getUserNumber(e.currentTarget.value)
-);
 fetchButton.addEventListener("click", () => {
   if (numberInput.value) {
-    console.log(fetchPokemon(1));
+    fetchPokemon(numberInput.value).then((data) => createMarkup(data));
   } else {
-    console.log("Nothing");
+    console.log("Nothing entered");
   }
 });
-// response.then((data) => console.log(data));
 
 function fetchPokemon(id) {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    .then((response) => response.json())
-    .then((data) => data);
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`).then((response) =>
+    response.json()
+  );
 }
 
-function getUserNumber(e) {
-  console.log(e);
+function createMarkup(data) {
+  const { name, height, weight, stats } = data;
+  const mapedStats = stats.map(
+    ({ base_stat, stat: { name } }) => `<li>Stat: ${name} = ${base_stat}</li>`
+  );
+  outputBlock.innerHTML = `<ul>Name of this pokemon: ${name}
+    <li>Height: ${height}</li>
+    <li>Weight: ${weight}</li>
+    <li><ul>Pokemon stats: ${mapedStats.join("")}</ul></li>
+    </ul>`;
 }
+
+// numberInput.addEventListener("change", (e) =>
+//   getUserNumber(e.currentTarget.value)
+// );
+
+// function getUserNumber(e) {
+//   console.log(e);
+// }
