@@ -1,2 +1,2 @@
 # week-1-task
-basis of rest api
+basis of fetch, js and ts
