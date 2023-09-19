@@ -6,11 +6,11 @@ function fetchPokemon(id) {
 }
 if (fetchButton) {
     fetchButton.addEventListener("click", () => {
-        if (numberInput && numberInput.value) {
+        if (numberInput && Number(numberInput.value)) {
             fetchPokemon(numberInput.value).then((data) => createMarkup(data));
         }
         else {
-            alert("Nothing entered");
+            alert("Please, enter number > 0");
         }
     });
 }
