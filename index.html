@@ -7,16 +7,30 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
     />
+    <link
+      href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link rel="stylesheet" href="./css/index.css" />
     <title>pokeStats</title>
   </head>
   <body>
-    <section>
-      <input type="number" class="js-input" />
-      <button type="button" class="js-btn">Click to Fetch!</button>
-      <div class="js-rootOutput"></div>
+    <section class="mui--bg-primary-dark">
+      <div class="mui-container centered">
+        <input type="number" class="js-input" />
+        <button
+          type="button"
+          class="js-btn mui-btn mui-btn--raised mui-btn--primary"
+        >
+          Завантажити
+        </button>
+      </div>
     </section>
-
+    <section class="mui--bg-primary-light">
+      <div class="js-rootOutput mui-container"></div>
+    </section>
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
     <script src="./js/index.js" type="module" defer></script>
   </body>
 </html>
